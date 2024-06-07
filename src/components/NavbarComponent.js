@@ -2,8 +2,9 @@ import React, { useContext, useState } from "react";
 import logo from "../assets/TechVault_transparent.png";
 import { Navbar, Container, Button, Modal } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
+import CartItem from "./CartItem";
 
-const NavbarComponent = () => {
+const NavbarComponent = ({ product }) => {
   const [showModal, setShowModal] = useState(false);
   const cartContext = useContext(CartContext);
   const productQuantity = cartContext.items.reduce(
@@ -26,7 +27,7 @@ const NavbarComponent = () => {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Button onClick={handleShowModal}>
-            In Cart: {productQuantity} Items
+            In Cart: ({productQuantity} Items)
           </Button>
         </Navbar.Collapse>
       </Navbar>
@@ -34,7 +35,20 @@ const NavbarComponent = () => {
         <Modal.Header closeButton>
           <Modal.Title>Shopping Cart</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Modal</Modal.Body>
+        <Modal.Body>
+          {productQuantity > 0 ? (
+            <>
+              <p>Items in cart:</p>
+              {cartContext.items.map((item, index) => (
+                <CartItem product={item} key={index} />
+              ))}
+              <h1>Total: £{cartContext.getTotalCost().toFixed(2)}</h1>
+              <Button variant="success">Checkout</Button>
+            </>
+          ) : (
+            <h3>There are no items in your cart.</h3>
+          )}
+        </Modal.Body>
       </Modal>
     </>
   );
