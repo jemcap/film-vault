@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../assets/TechVault_transparent.png";
 import { Navbar, Container, Button, Modal } from "react-bootstrap";
+import { CartContext } from "../context/CartContext";
 
 const NavbarComponent = () => {
   const [showModal, setShowModal] = useState(false);
+  const cartContext = useContext(CartContext);
+  const productQuantity = cartContext.items.reduce(
+    (acc, num) => acc + num.quantity,
+    0
+  );
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -19,7 +25,9 @@ const NavbarComponent = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Button onClick={handleShowModal}>Cart 0 Items</Button>
+          <Button onClick={handleShowModal}>
+            In Cart: {productQuantity} Items
+          </Button>
         </Navbar.Collapse>
       </Navbar>
       <Modal show={showModal} onHide={handleCloseModal}>
