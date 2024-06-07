@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/Film-Vault_transparent.png";
+import logo from "../assets/TechVault_transparent.png";
 import { Navbar, Container, Button, Modal } from "react-bootstrap";
 
 const NavbarComponent = () => {
