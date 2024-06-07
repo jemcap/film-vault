@@ -7,27 +7,31 @@ const ProductCard = ({ product }) => {
   const productQuantity = cartContext.getProductQuantity(product.id);
   console.log(cartContext.items);
   return (
-    <Card>
+    <Card className="mb-3 shadow">
       <Card.Body>
-        <Card.Title>{product.text}</Card.Title>
-        <Card.Text>{product.price}</Card.Text>
+        <Card.Title className="mb-2">{product.text}</Card.Title>
+        <Card.Text className="mb-3">
+          <strong>Price:</strong> £{product.price.toFixed(2)}
+        </Card.Text>
         {productQuantity > 0 ? (
           <>
-            <Form as={Row}>
+            <Form as={Row} className="align-items-center mb-3">
               <Form.Label column="true" sm="6">
                 In Cart: {productQuantity}
               </Form.Label>
-              <Col sm="6">
+              <Col sm="6" className="d-flex justify-content-end">
                 <Button
-                  sm="6"
-                  className="mx-2"
+                  variant="secondary"
+                  size="sm"
+                  className="me-2"
                   onClick={() => cartContext.addOneToCart(product.id)}
                 >
                   +
                 </Button>
                 <Button
-                  sm="6"
-                  className="mx-2"
+                  variant="secondary"
+                  size="sm"
+                  className="me-2"
                   onClick={() => cartContext.removeOneFromCart(product.id)}
                 >
                   -
@@ -36,7 +40,7 @@ const ProductCard = ({ product }) => {
             </Form>
             <Button
               variant="danger"
-              className="my-2"
+              className="w-100"
               onClick={() => cartContext.deleteFromCart(product.id)}
             >
               Remove from Cart
@@ -45,9 +49,10 @@ const ProductCard = ({ product }) => {
         ) : (
           <Button
             variant="primary"
+            className="w-100"
             onClick={() => cartContext.addOneToCart(product.id)}
           >
-            Add to cart
+            Add to Cart
           </Button>
         )}
       </Card.Body>
