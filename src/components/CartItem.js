@@ -15,9 +15,30 @@ const CartItem = ({ product }) => {
         <Row>
           <Col md={8}>
             <Card.Title>{productData.text}</Card.Title>
-            <Card.Text>Quantity: {quantity}</Card.Text>
-            <Card.Text>
-              Total: £{(quantity * productData.price).toFixed(2)}
+            <Card.Text className="mb-2">
+              <strong>Quantity:</strong> {quantity}
+            </Card.Text>
+            <div className="d-flex align-items-center mb-2">
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => cartContext.addOneToCart(id)}
+                className="me-2"
+              >
+                +
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => cartContext.removeOneFromCart(id)}
+                className="me-2"
+              >
+                -
+              </Button>
+            </div>
+            <Card.Text className="mb-2">
+              <strong>Total:</strong> £
+              {(quantity * productData.price).toFixed(2)}
             </Card.Text>
           </Col>
           <Col md={4} className="d-flex align-items-center justify-content-end">
