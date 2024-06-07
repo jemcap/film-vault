@@ -6,20 +6,22 @@ import NavbarComponent from "./components/NavbarComponent";
 import Cancel from "./pages/Cancel";
 import Success from "./pages/Success";
 import Store from "./pages/Store";
-
+import CartProvider from "./context/CartContext";
 function App() {
   return (
     <>
-      <Container>
-        <NavbarComponent />
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Store />} />
-            <Route path="success" element={<Success />} />
-            <Route path="cancel" element={<Cancel />} />
-          </Routes>
-        </BrowserRouter>
-      </Container>
+      <CartProvider>
+        <Container>
+          <NavbarComponent />
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Store />} />
+              <Route path="success" element={<Success />} />
+              <Route path="cancel" element={<Cancel />} />
+            </Routes>
+          </BrowserRouter>
+        </Container>
+      </CartProvider>
     </>
   );
 }
