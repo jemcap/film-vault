@@ -3,6 +3,9 @@ import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavbarComponent from "./components/NavbarComponent";
+import Cancel from "./pages/Cancel";
+import Success from "./pages/Success";
+import Store from "./pages/Store";
 
 function App() {
   return (
@@ -11,9 +14,9 @@ function App() {
         <NavbarComponent />
         <BrowserRouter>
           <Routes>
-            <Route path="/"></Route>
-            <Route path="success"></Route>
-            <Route path="cancel"></Route>
+            <Route index element={<Store />} />
+            <Route path="success" element={<Success />} />
+            <Route path="cancel" element={<Cancel />} />
           </Routes>
         </BrowserRouter>
       </Container>
