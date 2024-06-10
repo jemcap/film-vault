@@ -3,6 +3,9 @@ import logo from "../assets/TechVault_transparent.png";
 import { Nav, Navbar, Container, Button, Modal } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
 import CartItem from "./CartItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComponent = ({ product }) => {
   const [showModal, setShowModal] = useState(false);
@@ -37,10 +40,11 @@ const NavbarComponent = ({ product }) => {
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
           <Button onClick={handleShowModal} className="mx-3">
-            Saved ({productQuantity} Items)
+            <FontAwesomeIcon icon={faHeart} />
           </Button>
           <Button onClick={handleShowModal}>
-            In Cart: ({productQuantity} Items)
+            <FontAwesomeIcon icon={faCartShopping} />
+            {productQuantity ? productQuantity : undefined}
           </Button>
         </Navbar.Collapse>
       </Navbar>
