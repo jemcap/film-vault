@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import logo from "../assets/TechVault_transparent.png";
-import { Navbar, Container, Button, Modal } from "react-bootstrap";
+import { Nav, Navbar, Container, Button, Modal } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
 import CartItem from "./CartItem";
 
@@ -20,11 +20,21 @@ const NavbarComponent = ({ product }) => {
   };
   return (
     <>
-      <Navbar expand="sm">
+      <Navbar expand="sm" className="justify-content-center">
         <Navbar.Brand href="/">
           <img src={logo} width={150} />
         </Navbar.Brand>
         <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Nav>
+            <Nav.Item>
+              <Nav.Link href="/">HOME</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/store">PRODUCTS</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
           <Button onClick={handleShowModal} className="mx-3">
             Saved ({productQuantity} Items)
