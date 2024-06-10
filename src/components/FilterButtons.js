@@ -9,6 +9,7 @@ const FilterButtons = ({ categories, selectedCategory, onCategorySelect }) => {
     >
       <Button
         variant={selectedCategory === "All" ? "primary" : "outline-primary"}
+        size="sm"
         onClick={() => onCategorySelect("All")}
       >
         All
@@ -19,6 +20,7 @@ const FilterButtons = ({ categories, selectedCategory, onCategorySelect }) => {
           variant={
             selectedCategory === category ? "primary" : "outline-primary"
           }
+          size="sm"
           onClick={() => onCategorySelect(category)}
         >
           {category}

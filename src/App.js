@@ -7,12 +7,16 @@ import Cancel from "./pages/Cancel";
 import Success from "./pages/Success";
 import Store from "./pages/Store";
 import CartProvider from "./context/CartContext";
+import ProductCarousel from "./components/ProductCarousel";
 function App() {
   return (
     <>
       <CartProvider>
-        <Container>
+        <Container fluid>
           <NavbarComponent />
+          <ProductCarousel />
+        </Container>
+        <Container>
           <BrowserRouter>
             <Routes>
               <Route index element={<Store />} />

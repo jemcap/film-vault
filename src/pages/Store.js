@@ -23,7 +23,7 @@ const Store = () => {
         onCategorySelect={setSelectedCategory}
       />
       <h3 align="center" className="p-3">
-        {selectedCategory === "All" ? "All" : selectedCategory}
+        {selectedCategory === "All" ? "All Products" : selectedCategory}
       </h3>
       <Row xs={1} md={3} className="g-4">
         {filteredProducts.map((product, index) => (
