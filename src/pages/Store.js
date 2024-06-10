@@ -5,13 +5,12 @@ import ProductCard from "../components/ProductCard";
 const Store = () => {
   return (
     <>
-      <h1 align="center" className="p-3">
-        Used Tech Products
-      </h1>
+      <h3 align="center" className="p-3">
+        All
+      </h3>
       <Row xs={1} md={3} className="g-4">
         {productsArr.map((product, index) => (
           <Col align="center" key={index}>
-            {/* <img src={product.image} width={300} /> */}
             <ProductCard product={product} />
           </Col>
         ))}

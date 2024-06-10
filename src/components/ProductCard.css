@@ -1,0 +1,29 @@
+.product-image {
+  width: 100%; /* Make the image take up the full width of its container */
+  height: 500px; /* Set a fixed height for all images */
+  object-fit: cover; /* Ensure the image covers the area while maintaining its aspect ratio */
+  display: block; /* Ensure no inline spacing issues */
+}
+
+.product-card {
+  width: 100%; /* Adjust the width as needed */
+  height: 900px; /* Adjust the height as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+}
+
+.button-group .btn {
+  flex: 1; /* Ensure buttons take up equal width */
+}

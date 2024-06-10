@@ -26,6 +26,9 @@ const NavbarComponent = ({ product }) => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
+          <Button onClick={handleShowModal} className="mx-3">
+            Saved ({productQuantity} Items)
+          </Button>
           <Button onClick={handleShowModal}>
             In Cart: ({productQuantity} Items)
           </Button>

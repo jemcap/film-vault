@@ -1,15 +1,28 @@
 import React, { useContext } from "react";
 import { Card, Button, Form, Col, Row } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
+import "./ProductCard.css";
 
 const ProductCard = ({ product }) => {
   const cartContext = useContext(CartContext);
   const productQuantity = cartContext.getProductQuantity(product.id);
+  const { description } = product;
+  console.log(description);
   console.log(cartContext.items);
   return (
-    <Card className="mb-3 shadow">
+    <Card className="mb-3 shadow product-card">
       <Card.Body>
         <Card.Title className="mb-2">{product.text}</Card.Title>
+        <Card.Text>
+          <img src={product.image} className="product-image" alt="Hello" />
+        </Card.Text>
+        <Card.Text>
+          <ul align="start">
+            {description.map((desc, index) => (
+              <li key={index}>{desc}</li>
+            ))}
+          </ul>
+        </Card.Text>
         <Card.Text className="mb-3">
           <strong>Price:</strong> £{product.price.toFixed(2)}
         </Card.Text>
@@ -47,13 +60,24 @@ const ProductCard = ({ product }) => {
             </Button>
           </>
         ) : (
-          <Button
-            variant="primary"
-            className="w-100"
-            onClick={() => cartContext.addOneToCart(product.id)}
-          >
-            Add to Cart
-          </Button>
+          <>
+            <div className="d-flex">
+              <Button
+                variant="secondary"
+                className="me-2 flex-fill"
+                onClick={() => cartContext.addOneToCart(product.id)}
+              >
+                Save
+              </Button>
+              <Button
+                variant="primary"
+                className="flex-fill"
+                onClick={() => cartContext.addOneToCart(product.id)}
+              >
+                Add to Cart
+              </Button>
+            </div>
+          </>
         )}
       </Card.Body>
     </Card>
