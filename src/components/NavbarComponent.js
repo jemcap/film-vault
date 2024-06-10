@@ -25,7 +25,7 @@ const NavbarComponent = ({ product }) => {
     <>
       <Navbar expand="sm" className="justify-content-center">
         <Navbar.Brand href="/">
-          <img src={logo} width={150} />
+          <img src={logo} width={120} />
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
