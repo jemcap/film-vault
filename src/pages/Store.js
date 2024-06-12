@@ -3,6 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { productsArr } from "../context/productStore";
 import ProductCard from "../components/ProductCard";
 import FilterButtons from "../components/FilterButtons";
+
 const Store = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const products = productsArr;

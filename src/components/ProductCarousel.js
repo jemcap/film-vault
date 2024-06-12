@@ -9,26 +9,27 @@ const ProductCarousel = () => {
   return (
     <Carousel>
       <Carousel.Item className="carousel-item">
-        <img src={imgVinyl} alt="First slide" />
+        <img src={imgVinyl} alt="Discover Timeless Classics" />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Discover Timeless Classics</h3>
+          <p>Explore our curated collection of vintage tech treasures.</p>
+          <a href="/store">Shop Now</a>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img src={imgCamera} alt="First slide" />
+        <img src={imgCamera} alt="Relive the Golden Era" />
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Relive the Golden Era</h3>
+          <p>Find unique and nostalgic items that bring back memories.</p>
+          <a href="/store">Shop Now</a>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img src={imgTele} alt="First slide" />
+        <img src={imgTele} alt="Shop Rare Finds" />
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>Shop Rare Finds</h3>
+          <p>Get your hands on exclusive vintage pieces today.</p>
+          <a href="/store">Shop Now</a>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

@@ -12,13 +12,13 @@ const PromoBar = () => {
         <div>
           <h1>
             <FontAwesomeIcon icon={faTruckFast} />
-            <span> QUICK DELIVERY</span>
+            <span> Quick Delivery</span>
           </h1>
         </div>
         <div>
           <h1>
             <FontAwesomeIcon icon={faBoxesPacking} />
-            <span> FREE 30-DAY RETURN POLICY</span>
+            <span> FREE 30-day return policy</span>
           </h1>
         </div>
         <div>
