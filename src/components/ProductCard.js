@@ -1,14 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card, Button, Form, Col, Row } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
 import "./ProductCard.css";
 
 const ProductCard = ({ product }) => {
+  const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(false);
   const cartContext = useContext(CartContext);
   const productQuantity = cartContext.getProductQuantity(product.id);
+  const wishListQuantity = cartContext.wishListItems;
   const { description } = product;
-  console.log(description);
-  console.log(cartContext.items);
+  const productId = product.id.toString();
+
+  useEffect(() => {
+    setIsSaveButtonDisabled(
+      wishListQuantity.some((item) => item.id === product.id)
+    );
+  }, [wishListQuantity, product.id]);
+
+  function handleClickSave(id) {
+    console.log("Adding to wishlist:", id);
+    cartContext.addToWishList(id);
+    console.log("Updated wishlist:", wishListQuantity);
+    console.log("Product ID:", product.id);
+  }
+
   return (
     <Card className="mb-3 shadow product-card">
       <Card.Body>
@@ -65,7 +80,8 @@ const ProductCard = ({ product }) => {
               <Button
                 variant="secondary"
                 className="me-2 flex-fill"
-                onClick={() => cartContext.addOneToCart(product.id)}
+                onClick={() => handleClickSave(product.id)}
+                disabled={isSaveButtonDisabled}
               >
                 Save
               </Button>

@@ -1,14 +1,16 @@
 import React, { useContext, useState } from "react";
 import logo from "../assets/TechVault_transparent.png";
-import { Nav, Navbar, Container, Button, Modal } from "react-bootstrap";
+import { Nav, Navbar, Button, Modal } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
 import CartItem from "./CartItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import WishListItem from "./WishListItem";
 
-const NavbarComponent = ({ product }) => {
+const NavbarComponent = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showWishlist, setShowWishlist] = useState(false);
   const cartContext = useContext(CartContext);
   const productQuantity = cartContext.items.reduce(
     (acc, num) => acc + num.quantity,
@@ -20,6 +22,12 @@ const NavbarComponent = ({ product }) => {
   };
   const handleShowModal = () => {
     setShowModal(true);
+  };
+  const handleCloseWishlistModal = () => {
+    setShowWishlist(false);
+  };
+  const handleShowWishlistModal = () => {
+    setShowWishlist(true);
   };
   return (
     <>
@@ -39,15 +47,16 @@ const NavbarComponent = ({ product }) => {
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
-          <Button onClick={handleShowModal} className="mx-3">
+          <Button onClick={handleShowWishlistModal} className="mx-3">
             <FontAwesomeIcon icon={faHeart} />
           </Button>
           <Button onClick={handleShowModal}>
             <FontAwesomeIcon icon={faCartShopping} />
-            {productQuantity ? productQuantity : undefined}
+            {productQuantity ? `${"(" + productQuantity + ")"}` : undefined}
           </Button>
         </Navbar.Collapse>
       </Navbar>
+      {/* Cart modal */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Shopping Cart</Modal.Title>
@@ -65,6 +74,17 @@ const NavbarComponent = ({ product }) => {
           ) : (
             <h3>There are no items in your cart.</h3>
           )}
+        </Modal.Body>
+      </Modal>
+      {/* Wishlist modal */}
+      <Modal show={showWishlist} onHide={handleCloseWishlistModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Saved</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {cartContext.wishListItems.map((item, index) => (
+            <WishListItem product={item} key={index} />
+          ))}
         </Modal.Body>
       </Modal>
     </>

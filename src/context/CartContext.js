@@ -1,17 +1,21 @@
 import { createContext, useState } from "react";
-import { productsArr, getProductData } from "./productStore";
+import { getProductData } from "./productStore";
 
 export const CartContext = createContext({
   items: [],
+  wishListItems: [],
   getProductQuantity: () => {},
   addOneToCart: () => {},
   removeOneFromCart: () => {},
   deleteFromCart: () => {},
+  deleteFromWishlist: () => {},
   getTotalCost: () => {},
+  addToWishList: () => {},
 });
 
 export function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
+  const [wishListProducts, setWishListProducts] = useState([]);
 
   function getProductQuantity(id) {
     let quantity = cartProducts.find((product) => product.id === id)?.quantity;
@@ -64,6 +68,13 @@ export function CartProvider({ children }) {
       })
     );
   }
+  function deleteFromWishlist(id) {
+    setWishListProducts((product) =>
+      product.filter((product) => {
+        return product.id !== id;
+      })
+    );
+  }
 
   function getTotalCost() {
     let totalCost = 0;
@@ -74,13 +85,21 @@ export function CartProvider({ children }) {
     return totalCost;
   }
 
+  function addToWishList(id) {
+    // setWishListProducts([...wishListProducts, { id: id }]);
+    setWishListProducts([...wishListProducts, { id }]);
+  }
+
   const contextValue = {
     items: cartProducts,
+    wishListItems: wishListProducts,
     getProductQuantity,
     addOneToCart,
     removeOneFromCart,
     deleteFromCart,
+    deleteFromWishlist,
     getTotalCost,
+    addToWishList,
   };
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>

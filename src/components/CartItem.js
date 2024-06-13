@@ -15,6 +15,7 @@ const CartItem = ({ product }) => {
         <Row>
           <Col md={8}>
             <Card.Title>{productData.text}</Card.Title>
+            <Card.Img src={productData.image} />
             <Card.Text className="mb-2">
               <strong>Quantity:</strong> {quantity}
             </Card.Text>

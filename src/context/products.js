@@ -31,7 +31,7 @@ import ContaxG2 from "../assets/5e518672-8e49-47a0-81cd-841ff669002b.png";
 
 const products = [
   {
-    id: "1",
+    id: 1,
     text: "Vintage Sony Walkman",
     description: [
       "Classic portable cassette player",
@@ -46,7 +46,7 @@ const products = [
     image: SonyWalkmanImg,
   },
   {
-    id: "2",
+    id: 2,
     text: "Vintage Sennheiser HD414 Headphones",
     description: [
       "Legendary open-back headphones",
@@ -61,7 +61,7 @@ const products = [
     image: SennheiserHD414Img,
   },
   {
-    id: "3",
+    id: 3,
     text: "Vintage IBM Model M Keyboard",
     description: [
       "Mechanical keyboard with buckling springs",
@@ -76,7 +76,7 @@ const products = [
     image: IBMKeyboardImg,
   },
   {
-    id: "4",
+    id: 4,
     text: "Vintage Polaroid SX-70 Instant Camera",
     description: [
       "Iconic folding instant camera",
@@ -91,7 +91,7 @@ const products = [
     image: PolaroidCameraImg,
   },
   {
-    id: "5",
+    id: 5,
     text: "Vintage Kodak Brownie Hawkeye Camera",
     description: [
       "Classic box camera design",
