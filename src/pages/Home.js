@@ -38,12 +38,10 @@ const Home = () => {
           </Row>
         </ul>
         <div align="center">
-          <Button>View All</Button>
+          <Button href="/store">View All</Button>
         </div>
         <CameraBanner />
-        <div align="center">
-          <Button>View All</Button>
-        </div>
+
         <Footer />
       </Container>
     </>

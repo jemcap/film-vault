@@ -3,6 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { productsArr } from "../context/productStore";
 import ProductCard from "../components/ProductCard";
 import FilterButtons from "../components/FilterButtons";
+import Footer from "../components/Footer";
 
 const Store = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -33,6 +34,7 @@ const Store = () => {
           </Col>
         ))}
       </Row>
+      <Footer />
     </>
   );
 };

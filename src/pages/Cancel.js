@@ -1,7 +1,8 @@
 import React from "react";
+import CancelPayment from "../components/CancelPayment";
 
 const Cancel = () => {
-  return <h1>You have cancelled your payment.</h1>;
+  return <CancelPayment />;
 };
 
 export default Cancel;

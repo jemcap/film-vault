@@ -29,11 +29,29 @@ const NavbarComponent = () => {
   const handleShowWishlistModal = () => {
     setShowWishlist(true);
   };
+
+  const checkout = async () => {
+    await fetch("http://localhost:4000/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ items: cartContext.items }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        if (response.url) {
+          window.location.assign(response.url);
+        }
+      });
+  };
   return (
     <>
       <Navbar expand="sm" className="justify-content-center">
         <Navbar.Brand href="/">
-          <img src={logo} width={120} />
+          <img src={logo} width={120} alt={logo} />
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
@@ -69,7 +87,9 @@ const NavbarComponent = () => {
                 <CartItem product={item} key={index} />
               ))}
               <h1>Total: £{cartContext.getTotalCost().toFixed(2)}</h1>
-              <Button variant="success">Checkout</Button>
+              <Button variant="success" onClick={checkout}>
+                Checkout
+              </Button>
             </>
           ) : (
             <h3>There are no items in your cart.</h3>

@@ -9,7 +9,6 @@ const ProductCard = ({ product }) => {
   const productQuantity = cartContext.getProductQuantity(product.id);
   const wishListQuantity = cartContext.wishListItems;
   const { description } = product;
-  const productId = product.id.toString();
 
   useEffect(() => {
     setIsSaveButtonDisabled(
